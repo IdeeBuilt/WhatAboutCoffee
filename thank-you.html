@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You — What About Coffee?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #1e3d2f;
+      --green-light: #2a5240;
+      --gold: #c9a84c;
+      --gold-light: #e8c96d;
+      --cream: #f5edd8;
+      --dark: #0f1f17;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--cream);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      overflow: hidden;
+    }
+
+    .bg-glow {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 50% 40%, rgba(201,168,76,0.1) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(30,61,47,0.6) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .card {
+      position: relative;
+      background: rgba(30,61,47,0.5);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 28px;
+      padding: 3.5rem 3rem;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      animation: fadeUp 0.7s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .icon-wrap {
+      width: 80px; height: 80px;
+      background: rgba(201,168,76,0.12);
+      border: 2px solid rgba(201,168,76,0.35);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1.75rem;
+      animation: pop 0.5s 0.4s ease both;
+    }
+
+    @keyframes pop {
+      0%   { transform: scale(0.5); opacity: 0; }
+      70%  { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 span { color: var(--gold); }
+
+    .subtitle {
+      color: rgba(245,237,216,0.65);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .what-next {
+      background: rgba(245,237,216,0.04);
+      border: 1px solid rgba(245,237,216,0.08);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .what-next-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(245,237,216,0.4);
+      margin-bottom: 1rem;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .step:last-child { margin-bottom: 0; }
+
+    .step-num {
+      width: 26px; height: 26px;
+      min-width: 26px;
+      background: rgba(201,168,76,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .step-text {
+      font-size: 0.88rem;
+      color: rgba(245,237,216,0.7);
+      line-height: 1.5;
+      padding-top: 3px;
+    }
+
+    .btns {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--green);
+      padding: 0.9rem 1.5rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: block;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: rgba(245,237,216,0.6);
+      padding: 0.9rem 1.5rem;
+      border-radius: 100px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border: 1px solid rgba(245,237,216,0.15);
+      transition: all 0.2s;
+      display: block;
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(201,168,76,0.4);
+      color: var(--gold);
+    }
+
+    .footer-note {
+      margin-top: 2rem;
+      font-size: 0.78rem;
+      color: rgba(245,237,216,0.25);
+    }
+
+    .footer-note a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-glow"></div>
+
+  <div class="card" id="card">
+    <div class="icon-wrap" id="icon">☕</div>
+    <div class="tag" id="tag">Booking Received</div>
+    <h1 id="title">You're all set.<br><span>See you soon!</span></h1>
+    <p class="subtitle" id="subtitle">Your reservation has been received. We'll confirm your slot within 24 hours — check your email or expect a call from us.</p>
+
+    <div class="what-next">
+      <div class="what-next-title">What happens next</div>
+      <div class="step" id="step1">
+        <div class="step-num">1</div>
+        <div class="step-text">We review your booking details and check availability.</div>
+      </div>
+      <div class="step" id="step2">
+        <div class="step-num">2</div>
+        <div class="step-text">You'll receive a confirmation via email or phone within 24 hours.</div>
+      </div>
+      <div class="step" id="step3">
+        <div class="step-num">3</div>
+        <div class="step-text">Show up, enjoy great coffee, and make your event worthwhile. ✦</div>
+      </div>
+    </div>
+
+    <div class="btns">
+      <a href="index.html" class="btn-primary">Back to WACO</a>
+      <a href="https://www.instagram.com/whataboutcoffeeph/" target="_blank" class="btn-outline">Follow us on Instagram →</a>
+    </div>
+
+    <p class="footer-note">Questions? Reach us at <a href="mailto:wacakatipunan@gmail.com">wacakatipunan@gmail.com</a> or call <a href="tel:+639628100883">+63 962 810 0883</a></p>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get('type');
+
+    if (type === 'inquiry') {
+      document.getElementById('icon').textContent = '✉️';
+      document.getElementById('tag').textContent = 'Inquiry Received';
+      document.getElementById('title').innerHTML = 'Thanks for<br><span>reaching out!</span>';
+      document.getElementById('subtitle').textContent = "We've received your message and our team will get back to you within 1–2 business days. We can't wait to hear more about your event.";
+      document.getElementById('step1').querySelector('.step-text').textContent = 'Our team reads through your inquiry and event details.';
+      document.getElementById('step2').querySelector('.step-text').textContent = 'We reach out to discuss availability, rates, and setup.';
+      document.getElementById('step3').querySelector('.step-text').textContent = 'We finalize the details together and lock in your date. ✦';
+    }
+  </script>
+</body>
+</html>
