@@ -1112,7 +1112,7 @@
     ===================== */
     .menu-section {
       background: var(--cream-dark);
-      padding: 5rem 6%;
+      padding: 5rem 4%;
     }
 
     .menu-section .section-tag { display: block; text-align: center; }
@@ -1181,16 +1181,19 @@
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
+      gap: 1.5rem;
+      align-items: stretch;
     }
-
 
     .menu-cat-block {
       background: white;
       border-radius: 20px;
-      padding: 1.6rem;
+      padding: 2rem 1.75rem;
       box-shadow: 0 4px 20px rgba(0,0,0,0.07);
       border: none;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .menu-cat-title {
